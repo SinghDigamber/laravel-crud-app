@@ -14,3 +14,13 @@ cp .env.example .env
 ```
 
 Then hit `http://localhost/students` on your favorite browser to see if the app is working.
+
+## Run with plain docker compose
+
+To run the Laravel application in a production like way, please execute the following command:
+
+```
+docker-compose up
+```
+
+The go to `http://localhost/students` to view the output.
