@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
-
+use Flagsmith\Flagsmith;
 
 class StudentController extends Controller
 {
+   private $bt;
+
+    public function __construct()
+    {
+        $flagSmith = new Flagsmith('LKfXyih5yqZxL3huZ5LraP');
+        $this->bt = $flagSmith;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,8 @@ class StudentController extends Controller
     public function index()
     {
         $student = Student::all();
-        return view('index', compact('student'));
+        $showActions = $this->bt->isFeatureEnabled('show_actions');
+        return view('index', compact('student', 'showActions'));
     }
 
     /**
