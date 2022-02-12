@@ -5,8 +5,9 @@ services:
       context: ./
     volumes:
       - .:/var/www/html
+      - .env.prod:/var/www/html/.env
     ports:
-      - "80:80"
+      - "8081:80"
     environment:
       - APP_ENV=local
       - APP_DEBUG=true
